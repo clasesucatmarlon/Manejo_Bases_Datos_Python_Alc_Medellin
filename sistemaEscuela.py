@@ -24,7 +24,7 @@ class Course(Base):
     """ Class for Course
     """
     __tablename__ = 'course'
-    id = Column(Integer, Sequence('curso_seq_id'), primary_key=True)
+    id = Column(Integer, Sequence('course_seq_id'), primary_key=True)
     nameCourse = Column(String)
     stud = relationship("Student", back_populates='courses')
     time_course = relationship("Time", back_populates='course_time')
