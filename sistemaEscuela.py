@@ -27,7 +27,7 @@ class Course(Base):
     id = Column(Integer, Sequence('curso_seq_id'), primary_key=True)
     nameCourse = Column(String)
     stud = relationship("Student", back_populates='courses')
-    time_course = relationship("Time", back_populates='curso_hora')
+    time_course = relationship("Time", back_populates='course_time')
 
     def __repr__(self):
         return'{}'.format(self.nameCourse)
@@ -57,7 +57,7 @@ class Time(Base):
     time_end = Column(String)
     teacher_id = Column(Integer, ForeignKey('teacher.id'))
     course_id = Column(Integer, ForeignKey('course.id'))
-    curso_hora = relationship("Course", back_populates='time_course')
+    course_time = relationship("Course", back_populates='time_course')
     course_teacher = relationship("Teacher", back_populates='teacher_course')
 
     def __repr__(self):
@@ -84,7 +84,7 @@ print('* ASSIGNMENT: ', stud_01.cursos)
 
 shed_01 = Time(day='Monday: ', time_start="10:00 am ", time_end='- 5:00 pm')
 session.add(shed_01)
-shed_01.curso_hora = Course(nameCourse='ALGORITMOS')
+shed_01.course_time = Course(nameCourse='ALGORITMOS')
 shed_01.course_teacher = Teacher(nameTeacher='Pedro', lastTeacher=' CARRERO')
 
 print('* TEACHER: ', shed_01.course_teacher)
@@ -109,7 +109,7 @@ print('* ASSIGNMENT: ', stud_02.cursos)
 
 shed_02 = Time(day='Thursday: ', time_start="2:00 am ", time_end='- 7:00 pm')
 session.add(shed_02)
-shed_02.curso_hora = Course(nameCourse='TRUBUTACION')
+shed_02.course_time = Course(nameCourse='TRUBUTACION')
 shed_02.course_teacher = Teacher(nameTeacher='Hermes', lastTeacher=' CORREA')
 
 print('* TEACHER: ', shed_02.course_teacher)
