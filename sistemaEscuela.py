@@ -51,7 +51,7 @@ class Time(Base):
     """ Class for Schedule
     """
     __tablename__ = 'schedule'
-    id = Column(Integer, Sequence('horario_seq_id'), primary_key=True)
+    id = Column(Integer, Sequence('shedule_seq_id'), primary_key=True)
     day = Column(String)
     time_start = Column(String)
     time_end = Column(String)
